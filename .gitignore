@@ -6,3 +6,4 @@ __pycache__/
 
 # Enviroment files
 .env
+*.env
