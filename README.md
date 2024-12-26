@@ -1,1 +1,1 @@
-![Dashboard](./DataViz%20-%20PowerBI/dashboard01.png)
+![Dashboard](./DataViz%20-%20PowerBI/dashboard.png)
