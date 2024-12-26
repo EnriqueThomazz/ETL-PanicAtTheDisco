@@ -7,7 +7,7 @@ import os
 artist_id = "20JZFwl6HVl6yg8a4H3ZqK"
 
 # Getting the access token
-load_dotenv("./credentials.env")
+load_dotenv("./cred.env")
 
 client_id = os.getenv("client_id")
 client_secret = os.getenv("client_secret")
@@ -38,7 +38,13 @@ for item in albums:
     response = rq.get(f"https://api.spotify.com/v1/albums/{item["id"]}/tracks",
                     headers={"Authorization": f"Bearer {access_token}"})
     
-    tracks += json.loads(response.text)["items"]
+    res = json.loads(response.text)["items"]
+
+    # Adding to each track the information about wich album it belongs to
+    for i in res:
+        i["album_id"] = item["id"]
+
+    tracks += res
 
 with open("./Raw/tracks.json", "w") as output:
     json.dump(tracks, output)
